@@ -3,7 +3,11 @@
 <p align="center">
    <img src="https://img.shields.io/badge/STATUS-%20FINALIZADO-green">
    </p>
-   
+
+<p align="center">
+  <img width="700" height="280" src="Images/mooc_1.png">
+</p>
+
 # Tabla de contenidos
 * [Introducción](#Introducción)
 
@@ -11,7 +15,11 @@
 
 * [Descripción del problema](#Descripción-del-problema)
 
+* [Propuesta de trabajo](#Propuesta-de-trabajo)
+
 * [Desarrollo del proyecto](#Desarrollo-del-proyecto)
+
+* [KPIs](#KPIs)
 
 * [Principales tecnologías utilizadas](#Principales-tecnologías-utilizadas)
 
@@ -19,85 +27,70 @@
 
 * [Conclusiones](#Conclusiones)
 
-## Introducción
-Hola a todos, hoy quiero compartirles un proyecto enfocado en el área de Machine Learning en el cual se van a desarollar dos modelos: uno de aprendizaje supervisado y otro de aprendizaje no supervisado, los cuales se entrenarán para predecir el precio de una propiedad en EE.UU. 
+# Introducción
+Hola a todos, hoy quiero compartirles un proyecto enfocado en el área de Data Analyst en el cual se van a explorar y analizar los rendimientos en ventas de tres plataformas de cursos online para la toma de decisiones de una nueva Startup de tecnología que quiere sumarse al mercado. 
+# Descripción del proyecto
 
-## Descripción del proyecto
+### *Cursos masivos abiertos y online*
 
-### *Mercado inmobiliario*
-​Dentro de la sociedad globalizada e industrializada, es sabido que los precios de los inmuebles han presentado un constante cambio, por lo que quienes deseen invertir o vender una propiedad se enfrentan al fenómeno especulativo existente en la valorización de éstos. Esto, debido a la constante tendencia de las ciudades a crecer demográfica y comercialmente, llegando a un punto en donde no se tiene certeza de la valorización real dentro del sector en donde se desee invertir.​Pese a que el precio depende, en cierta medida, de las tendencias que esté teniendo el mercado inmobiliario en un determinado tiempo, poder estimar adecuadamente el valor de una propiedad es una referencia clave para entender si es una buena oportunidad, ya sea de compra o de venta.​
+Los MOOCs (cursos masivos abiertos y online, por sus siglas en inglés) han revolucionado el mundo de la educación desde principios de la década pasada, cuando el profesor Sebastian Thrun comenzó con la transmisión online de su curso introductorio a la Inteligencia Artificial. Poco tiempo después, Thrun fundó Udacity y con el pasar de los años se han ido sumando otras plataformas como edX y Coursera, brindando servicios similares: acceso a contenido específico, de calidad y de manera práctica, desde la comodidad del hogar. Muchas de estas plataformas tienen contenido gratuito mientras que el modelo de negocio en general se basa ya sea en el pago de suscripciones recurrentes para acceso general o únicas, para acceder a certificaciones o a cursos premium. Con el aumento de la popularidad de los MOOCs, no solo han aparecido nuevas plataformas privadas como las mencionadas anteriormente, sino que también muchas universidades y organizaciones sin fines de lucro han sumado a la oferta haciendo el mercado mucho más competitivo. En este contexto, resulta imperante para cada plataforma, ajustar sus modelos de negocio, los cursos y el contenido que se ofrece en los mismos para lograr captar y retener a la mayor cantidad de clientes.
 
-## Descripción del problema
+# Descripción del problema
 
-Hemos sido contactados para el área de Machine Learning de una importante empresa inversora dentro del rubro de la inmobiliaria en Estados Unidos. ​El Team Lider le propone dos predicciones posibles, de las cuales puede elegir cuál realizar (o ambas si así lo quiere):​
+Nuestra Project Manager se dirigió a nosotros con un nuevo ticket de trabajo. Una startup de tecnología está interesada en sumarse al mercado de cursos online, pero de una manera eficiente, por lo que compró datasets de posibles competidores para analizar y sacar conclusiones de los datos recolectados.
 
-1. Implementar un modelo de clasificación con aprendizaje supervisado que permita clasificar el precio de las propiedades en venta, utilizando los datos que se han puesto a su disposición. ​Para esto debe crear la columna category_price, en la cual se consideran las siguientes categorías:
-    * 'low': Para precios entre 0 y 999 dólares (debe tomar valor 1 en el archivo con las predicciones).
-    * 'high': Para precios desde 1000 dólares en adelante (debe tomar valor 0 en el archivo con las predicciones). ​Considerando esta categorización, el objetivo es predecir si una propiedad pertenece a la categoría de precios bajos (low).​
-2. Implementar un modelo de clasificación con aprendizaje no supervisado, utilizando clustering que agrupe las propiedades por segun las siguientes categorias:
-    * 'low': Para precios entre 0 y 999 dólares (debe tomar valor 1 en el archivo con las predicciones).
-    * 'medium': Para precios entre 1000 y 1999 dólares (debe tomar valor 0 en el archivo con las predicciones).
-    * 'high': Para precios desde 2000 dólares en adelante (debe tomar valor 0 en el archivo con las predicciones).​
+# Propuesta de trabajo
 
-Para ello, solo usaran el dataset de test provisto, eliminando previamente las caracteristicas que presenten nulos.​
+* Ellos solicitan segmentar los el nivel de ventas según precio, idioma, nivel y rating de cada curso para analizar qué tanto influyen dichas variables en la demanda del producto vendido.
+
+* Por otra parte se nos solicita un WordCloud de las palabras clave que más se repiten dentro del título. (Se puede añadir otras variables de nuestro interés).
+
+* Con el fin de monitorear la eficacia de los objetivos de la empresa, se le pide establecer al menos 1 KPI producto de su análisis y que el mismo se pueda visualizar en un dashboard.
+
+* Por último, se nos pide una demo en un rango de tiempo de no más de 10 min donde presentamos las funcionalidades del dashboard y las conclusiones/recomendaciones de nuestra parte.
 
 # Desarrollo del proyecto
 
-## Modelo de aprendizaje supervisado
+* Fuentes.
 
-*  EDA \
-Primero cargamos los datos usando la libreria pandas, y realizamos las siguientes transformaciones para poder entrenar nuestro modelo.
-    + Para las columnas 'laundry_options' y 'parking_options' rellenamos los nulos con la moda y para las columnas 'lat' y 'long' borramos los nulos.
-    + Borramos las columnas 'id', 'url', 'region_url', 'image_url','description' las cuales contienen texto y no son relevantes para el modelo.
-    + Para las columnas 'lat' y 'long' nos enfocamos en reestringir las latitudes y longitudes a las pertenecientes a EE.UU.
-    + Creamos la columna 'category_price' y luego la codificamos con one hot encoder para finalmente borrar las columnas  'category_price' y 'price'.
-    +Las columnas categóricas también las codificamos para convertirlas a numéricas.
-    + Finalmente hacemos los mismos cambios en el dataset 'test.parquet' pero sin borrar nulos.
+    Cargamos los datos dados en python los cuales se encuentran en el       siguiente link https://drive.google.com/drive/folders/1TS76ok6giW7D_l5vc-   zu5-cBU_dH3P5H.
 
-Nuestros dataframe 'train.parquet' luce así después de los cambios.
-<p align="center">
-  <img width="7000" height="280" src="Images/datatrain.png">
-</p>
+* EDA.
 
-## Desarrollo del modelo
+    Realizamos distintas transformaciones como borrar nulos, imputar valores faltantes y outliers. Así mismo se crearon columnas necesarias para el análisis y se complementa con salidas gráficas de los datos para tener una mayor vision de nuestros datos.
 
-Después de tener los datos limpios, y observando el requerimiento del cliente nos enfocamos en implementar un modelo de aprendizaje supervisado llamado árbol del decisión.
-* Predicción\
-Se entrena el modelo y se utilizan métodos como GridSerachCV para escoger los mejores hiperparámetros de nuestro modelo.\
-+ Rendimiento del modelo\
-Para evaluar el desempeño del modelo, se utilizaron las métricas de Exhaustividad (Recall) de precisión (Accuracy), basándonos en la matriz de confusión.
- el cual nos arroja:
-    * `Recall: 0.9013`
-    * `Accuracy: 0.9047` 
+* Power Bi.
 
-Como los resultados estan por encima de 90 indica que el modelo predice muy bien con datos nuevos. 
+    Cargamos nuestros datos limpios a Power Bi, sin embargo aún habian algunos errores de tipo de las columnas así que borramos los errores y procedemos a realizar tres dashboard con información de cada una de las tres plataformas: Udemy, EdX y Coursera.
 
-## Aprendizaje no supervisado
-Para esta instancia nos enfocamos en algoritmos de clustering como el algoritmo de k-means el cual nos ayudará a agrupar en las tres categorías que nos piden: 'low', 'medium' y 'high'.
+*Word cloud
+    Creamos una nube de plabras en python la cual nos muestra las plabras que más se repiten en los titulos de los cursos de los datasets dados.
 
-* Modelado\
-Se crea el modelo de aprendizaje no supervisado  (k-means), usando el dataset 'test.parquet' y previamente haciendo limpieza de los datos.
 
-+ Rendimiento del modelo\
-Para evaluar el desempeño del modelo, se utiliza las métrica  de `Silhouette score`. La cual nos arroja:
-    * `Silhouette score: 0.6235`
+## KPIs
 
-El cual es número cercano a 1, lo cual indica que nuestro modelo no es el mejor pero predice bastante bien.
+* `Número de estudiantes inscriptos por curso, cursos más populares.` Este KPI nos permite ver qué cursos son los más solicitados por los usuarios de internet.
+* `Número de cursos por área, áreas más populares.` Este KPI nos permite saber cuales son las áreas que más tienen crecimiento en el mundo de los cursos online. 
+
 
 ## Principales tecnologías utilizadas
 
 * Python
     + pandas
-    + scikit learn
     + seaborn
     + matplotlib
+    + wordcloud
+    + langdetect
+* Power BI
+    * DAX
+    * Power Query
 
 ## Información del proyecto
-Puede encontrar toda la información inicial de este proyecto en: https://github.com/soyHenry/Datathon.git
+Puede encontrar toda la información inicial de este proyecto en: https://github.com/soyHenry/PI03-Analytics.git
 
 ## Conclusiones:
 
-Este fue un proyecto desafiante en el que se logra interiorizar los conceptos de Machine Learning, Aprendizaje supervisado no supervisado así mismo los diferentes algorítmos de clasificación. En este proyecto see logra el objetivo principal, el cual era predecir el precio de una propiedad en los Estados Unidos usando alguno de las dos ramas del ML.
+Los cursos masivos abiertos y online han tenido un gran auge en los últimos tiempos  además de que instituciones y universidades se han sumado a dicho mundo. Actualmente los cursos más demandados y con mayor número de ventas son los cursos enfocados a áreas como Computación y ciencias, desarrollo web y Finanzas. Así, mismo podemos concluir que los cursos que generan un mayor ingreso se encuentran en el idioma Inglés.
 
 Gracias por haber llegado hasta aquí 💛.
 
