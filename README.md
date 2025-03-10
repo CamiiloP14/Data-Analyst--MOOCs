@@ -28,7 +28,7 @@
 * [Conclusiones](#Conclusiones)
 
 # Introducción
-Hola a todos, hoy quiero compartirles un proyecto enfocado en el área de Data Analyst en el cual se van a explorar y analizar los rendimientos en ventas de tres plataformas de cursos online para la toma de decisiones de una nueva Startup de tecnología que quiere sumarse al mercado. 
+Bienvenidos, hoy quiero compartirles un proyecto enfocado en el área de Data Analyst en el cual se van a explorar y analizar los rendimientos en ventas de tres plataformas de cursos online para la toma de decisiones de una nueva Startup de tecnología que quiere sumarse al mercado. 
 # Descripción del proyecto
 
 ### *Cursos masivos abiertos y online*
